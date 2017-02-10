@@ -19,7 +19,7 @@ public class Main {
         Statement requete = connexion.createStatement();
         ResultSet resultat = requete.executeQuery(requeteSql);
         while (resultat.next()) {
-            String email = resultat.getString("EMAIL");
+            String email = resultat.getString(1);
             System.out.println(email);
         }
         resultat.close();
