@@ -9,13 +9,13 @@ import com.mysql.jdbc.Driver;
 
 public class MainMysql {
 
-    static String databaseUrl = "jdbc:mysql://HOSTNAME:3306/DBID?user=user&password=password";
+    static String databaseUrl = "jdbc:mysql://HOSTNAME:3306/DBID";
     static String requeteSql = "SELECT FNAME FROM CONTACTS ORDER BY FNAME";
 
     public static void main(String[] args) throws Exception {
         DriverManager.registerDriver(new Driver());
 
-        Connection connexion = DriverManager.getConnection(databaseUrl);
+        Connection connexion = DriverManager.getConnection(databaseUrl, "user", "password");
         Statement requete = connexion.createStatement();
         ResultSet resultat = requete.executeQuery(requeteSql);
         while (resultat.next()) {

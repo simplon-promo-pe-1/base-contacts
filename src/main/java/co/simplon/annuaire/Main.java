@@ -9,13 +9,13 @@ import oracle.jdbc.OracleDriver;
 
 public class Main {
 
-    static String databaseUrl = "jdbc:oracle:thin:SIMPLON/SIMPLON@localhost:1521:XE";
+    static String databaseUrl = "jdbc:oracle:thin:localhost:1521:XE";
     static String requeteSql = "SELECT FNAME FROM CONTACTS ORDER BY FNAME";
 
     public static void main(String[] args) throws Exception {
         DriverManager.registerDriver(new OracleDriver());
 
-        Connection connexion = DriverManager.getConnection(databaseUrl);
+        Connection connexion = DriverManager.getConnection(databaseUrl, "SIMPLON", "SIMPLON");
         Statement requete = connexion.createStatement();
         ResultSet resultat = requete.executeQuery(requeteSql);
         while (resultat.next()) {
