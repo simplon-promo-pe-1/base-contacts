@@ -10,7 +10,7 @@ import oracle.jdbc.OracleDriver;
 public class Main {
 
     static String databaseUrl = "jdbc:oracle:thin:localhost:1521:XE";
-    static String requeteSql = "SELECT FNAME FROM CONTACTS ORDER BY FNAME";
+    static String requeteSql = "SELECT EMAIL FROM CONTACTS WHERE CONTACT_TYPE='friend' ";
 
     public static void main(String[] args) throws Exception {
         DriverManager.registerDriver(new OracleDriver());
@@ -19,8 +19,8 @@ public class Main {
         Statement requete = connexion.createStatement();
         ResultSet resultat = requete.executeQuery(requeteSql);
         while (resultat.next()) {
-            String prenom = resultat.getString("FNAME");
-            System.out.println(prenom);
+            String email = resultat.getString("EMAIL");
+            System.out.println(email);
         }
         resultat.close();
         requete.close();
