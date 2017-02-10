@@ -6,7 +6,7 @@ La base cible est une base Oracle XE dont le script de création des tables est 
 Chaque étape est traitée dans une branche de son nom, l'ensemble des étapes à suivre est définie ci-dessous :
 - 1. Initier un projet contenant une unique classe, en partant de l'exemple du projet [BaseRH](https://github.com/simplon-promo-pe-1/baserh) qui vous a été fourni, tout en appliquant les meilleures pratiques dont vous pouvez à ce jour avoir connaissance
 - 2. Modifier la classe principale afin de lister dans la console les prénoms de tous les contacts (triés)
-- 3. Observer les imports en *java.sql.\** et aller consulter la (Java)Doc en ligne pour découvrir les premiers éléments de l'**API JDBC**
+- 3. Observer les imports en *java.sql* et aller consulter la (Java)Doc en ligne pour découvrir les premiers éléments de l'**API JDBC**
 - 4. (optionnel) Adapter votre code pour réaliser la même requête sur une base MySQL
 - 5. Sortir user/mot de passe de la chaîne de connexion et les fournir au moment de la création de la connexion
 - 6. Adapter le code pour exécuter une requête permettant de lister l'ensemble des emails des contacts de type 'friend'
