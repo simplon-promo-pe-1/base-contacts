@@ -1,29 +1,30 @@
 package co.simplon.annuaire;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.List;
 
-import com.mysql.jdbc.Driver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import co.simplon.annuaire.dao.ContactsDAO;
+import co.simplon.annuaire.dao.JdbcMysqlContactsDAO;
 
 public class MainMysql {
 
-    static String databaseUrl = "jdbc:mysql://HOSTNAME:3306/DBID";
-    static String requeteSql = "SELECT FNAME FROM CONTACTS ORDER BY FNAME";
-
+	private final static Logger LOGGER = LoggerFactory.getLogger(MainMysql.class);
+	
     public static void main(String[] args) throws Exception {
-        DriverManager.registerDriver(new Driver());
+		String type = "";
+		if (args.length > 0) {
+			type = args[0];
+		};
+		LOGGER.info("Lecture des emails des contacts de type " + type);
+		
+		ContactsDAO dao = new JdbcMysqlContactsDAO();
+		List<String> listeEmails = dao.findEmailsByContactType(type);
 
-        Connection connexion = DriverManager.getConnection(databaseUrl, "user", "password");
-        Statement requete = connexion.createStatement();
-        ResultSet resultat = requete.executeQuery(requeteSql);
-        while (resultat.next()) {
-            String prenom = resultat.getString("FNAME");
-            System.out.println(prenom);
-        }
-        resultat.close();
-        requete.close();
-        connexion.close();
+		for (String email : listeEmails) {
+			LOGGER.debug("Affichage de l'email " + email);
+			System.out.println(email);
+		}
     }
 }
