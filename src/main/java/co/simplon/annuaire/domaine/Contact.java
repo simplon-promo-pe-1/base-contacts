@@ -1,14 +1,34 @@
 package co.simplon.annuaire.domaine;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CONTACTS")
 public class Contact {
 
+	@Id
+	@GeneratedValue
+	@Column(name = "ID", nullable = false)
 	private long id;
+	@Column(name = "FNAME", length = 100)
 	private String prenom;
+	@Column(name = "LNAME", length = 100)
 	private String nom;
+	@Column(name = "EMAIL", length = 255)
 	private String email;
+	@Column(name = "CONTACT_TYPE", length = 30)
 	private String type;
+	@Column(name = "AGE")
 	private int age;
-	
+
+	public Contact() {
+		super();
+	}
+
 	public Contact(String prenom, String nom, String type) {
 		super();
 		this.prenom = prenom;

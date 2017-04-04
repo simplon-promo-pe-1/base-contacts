@@ -8,7 +8,7 @@ public class JdbcMysqlContactsDAO extends AbstractJdbcContactDAO implements Cont
 
 	@Override
 	public String getUrl() {
-		return "jdbc:mysql://changeme";
+		return "jdbc:mysql://sql8.freemysqlhosting.net:3306/sql8157970?user=sql8157970&password=GTyyUfvfQ6";
 	}
 
 	@Override

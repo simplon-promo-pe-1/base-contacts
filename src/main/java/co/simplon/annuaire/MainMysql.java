@@ -23,7 +23,7 @@ public class MainMysql {
 		List<String> listeEmails = dao.findEmailsByContactType(type);
 
 		for (String email : listeEmails) {
-			LOGGER.debug("Affichage de l'email " + email);
+			LOGGER.debug("Affichage du courriel = " + email);
 			System.out.println(email);
 		}
     }
