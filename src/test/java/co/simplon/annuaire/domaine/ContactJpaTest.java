@@ -17,6 +17,11 @@ public class ContactJpaTest {
 
 	@Test
 	public void le_mapping_du_premier_contact_doit_etre_coherent() {
+		if (System.getProperty("java.util.logging.config.file") == null) {
+			throw new RuntimeException(
+					"Ajouter -Djava.util.logging.config.file=src/test/resources/logging.properties "
+							+ "dans les paramètres de la JVM pour l'exécution du test");
+		}
 		// GIVEN
 		Long idRecherche = 1L;
 
@@ -35,5 +40,4 @@ public class ContactJpaTest {
 		assertEquals("friend", contact.getType());
 		assertEquals(46, contact.getAge());
 	}
-
 }
