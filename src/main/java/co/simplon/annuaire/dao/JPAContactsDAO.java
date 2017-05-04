@@ -25,6 +25,8 @@ public class JPAContactsDAO implements ContactsDAO {
 		em.getTransaction().begin();
 		em.persist(contact);
 		em.getTransaction().commit();
+
+		em.close();
 	}
 
 }
