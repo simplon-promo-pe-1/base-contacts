@@ -3,6 +3,8 @@ package co.simplon.annuaire.domaine;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
+import java.util.Calendar;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -31,6 +33,11 @@ public class HobbieJpaTest {
 		LOGGER.info(hobbie.getNom());
 		assertThat(hobbie.getId(), equalTo(idRecherche));
 		assertThat(hobbie.getNom(), equalTo("Horseback Riding"));
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(hobbie.getDepuis());
+		assertThat(cal.get(Calendar.DAY_OF_MONTH), equalTo(3));
+		assertThat(cal.get(Calendar.MONTH), equalTo(Calendar.MAY));
+		assertThat(cal.get(Calendar.YEAR), equalTo(2017));
 		assertThat(hobbie.getContactId(), equalTo(1L));
 	}
 }

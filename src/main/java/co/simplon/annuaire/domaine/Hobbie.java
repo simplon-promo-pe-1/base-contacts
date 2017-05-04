@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "HOBBIES")
@@ -21,7 +22,8 @@ public class Hobbie {
 	@Column(name = "HOBBY")
 	private String nom;
 
-	@Transient
+	@Column(name = "SINCE")
+	@Temporal(TemporalType.DATE)
 	private Date depuis;
 
 	@Column(name = "CONTACT_ID")
