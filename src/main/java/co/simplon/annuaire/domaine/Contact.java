@@ -1,9 +1,13 @@
 package co.simplon.annuaire.domaine;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +28,10 @@ public class Contact {
 	private String type;
 	@Column(name = "AGE")
 	private int age;
+
+	@OneToMany
+	@JoinColumn(name = "CONTACT_ID")
+	private Set<Hobbie> hobbies;
 
 	public Contact() {
 		super();
@@ -71,6 +79,10 @@ public class Contact {
 
 	public String getType() {
 		return type;
+	}
+
+	public Set<Hobbie> getHobbies() {
+		return hobbies;
 	}
 	
 }

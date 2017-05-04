@@ -1,6 +1,8 @@
 package co.simplon.annuaire.domaine;
 
+import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,12 +26,14 @@ public class ContactJpaTest {
 		}
 		// GIVEN
 		Long idRecherche = 1L;
+		Long idHobbie = 3L;
 
 		// WHEN
 		EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("BaseContacts");
 		EntityManager em = emf.createEntityManager();
 		Contact contact = em.find(Contact.class, idRecherche);
+		Hobbie hobbie = em.find(Hobbie.class, idHobbie);
 
 		// THEN
 		LOGGER.info(contact.getEmail());
@@ -39,5 +43,7 @@ public class ContactJpaTest {
 		assertEquals("dsmith@icloud.com", contact.getEmail());
 		assertEquals("friend", contact.getType());
 		assertEquals(46, contact.getAge());
+		assertEquals(2, contact.getHobbies().size());
+		assertThat(contact.getHobbies(), hasItem(hobbie));
 	}
 }
