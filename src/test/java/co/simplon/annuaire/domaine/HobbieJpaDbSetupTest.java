@@ -57,7 +57,7 @@ public class HobbieJpaDbSetupTest {
 						.build());
 
 		DbSetup dbSetup = new DbSetup(new DriverManagerDestination(
-				"jdbc:hsqldb:file:testDB", "sa", ""), operation);
+				"jdbc:hsqldb:mem:testDB", "sa", ""), operation);
 		dbSetup.launch();
 	}
 

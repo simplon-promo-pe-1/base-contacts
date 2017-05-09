@@ -6,7 +6,7 @@
 		<class>co.simplon.annuaire.domaine.Contact</class>
 		<class>co.simplon.annuaire.domaine.Hobbie</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:testDB"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:testDB"/>
 			<property name="javax.persistence.jdbc.user" value="sa"/>
 			<property name="javax.persistence.jdbc.password" value=""/>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
