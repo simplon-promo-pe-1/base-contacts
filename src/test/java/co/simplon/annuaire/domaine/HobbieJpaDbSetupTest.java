@@ -5,14 +5,12 @@ import static com.ninja_squad.dbsetup.Operations.sequenceOf;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.sql.DriverManager;
 import java.util.Calendar;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.hsqldb.jdbcDriver;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -57,10 +55,9 @@ public class HobbieJpaDbSetupTest {
 						.columns("ID", "HOBBY", "SINCE", "CONTACT_ID")
 						.values(1L, "Horseback Riding", dateHobby.getTime(), 1L)
 						.build());
-		DriverManager.registerDriver(new jdbcDriver());
 
 		DbSetup dbSetup = new DbSetup(new DriverManagerDestination(
-				"jdbc:hsqldb:file:testDB", "sa", ""), operation);
+				"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "sa", "sa"), operation);
 		dbSetup.launch();
 	}
 
