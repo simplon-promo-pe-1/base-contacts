@@ -11,26 +11,26 @@ import co.simplon.annuaire.domaine.Contact;
 
 public class JPAContactsDAO implements ContactsDAO {
 
+	EntityManager em;
+
+	public JPAContactsDAO() {
+		super();
+		em = getEntityManager();
+	}
+
 	@Override
 	public List<String> findEmailsByContactType(String type) throws Exception {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("BaseContacts");
-		EntityManager em = emf.createEntityManager();
-
 		TypedQuery<String> q = em.createQuery(
-				"select c.email from Contact c where c.type = :type",
+				"select email from Contact where type = :type",
 				String.class);
 		q.setParameter("type", type);
-
-		return q.getResultList();
+		List<String> emails = q.getResultList();
+		em.close();
+		return emails;
 	}
 
 	@Override
 	public void createContact(Contact contact) throws Exception {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("BaseContacts");
-		EntityManager em = emf.createEntityManager();
-
 		em.getTransaction().begin();
 		em.persist(contact);
 		em.getTransaction().commit();
@@ -38,4 +38,10 @@ public class JPAContactsDAO implements ContactsDAO {
 		em.close();
 	}
 
+	private EntityManager getEntityManager() {
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("BaseContacts");
+		EntityManager em = emf.createEntityManager();
+		return em;
+	}
 }
