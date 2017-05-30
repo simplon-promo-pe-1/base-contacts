@@ -20,8 +20,7 @@ public class JPAContactsDAO implements ContactsDAO {
 
 	@Override
 	public List<String> findEmailsByContactType(String type) throws Exception {
-		TypedQuery<String> q = em.createQuery(
-				"select email from Contact where type = :type",
+		TypedQuery<String> q = em.createNamedQuery("findEmailsByContactType",
 				String.class);
 		q.setParameter("type", type);
 		List<String> emails = q.getResultList();

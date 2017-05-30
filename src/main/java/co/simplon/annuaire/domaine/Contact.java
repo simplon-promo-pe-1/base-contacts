@@ -7,9 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@NamedQueries(
+		{ 
+			@NamedQuery(
+					name = "findEmailsByContactType", 
+					query = "select email from Contact where type = :type")
+		}
+)
 @Entity
 @Table(name = "CONTACTS")
 public class Contact {
