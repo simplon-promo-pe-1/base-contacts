@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import co.simplon.annuaire.dao.ContactsDAO;
-import co.simplon.annuaire.dao.JdbcMysqlContactsDAO;
+import co.simplon.annuaire.dao.JPAContactsDAO;
 
 public class MainMysql {
 
@@ -19,7 +19,8 @@ public class MainMysql {
 		};
 		LOGGER.info("Lecture des emails des contacts de type " + type);
 		
-		ContactsDAO dao = new JdbcMysqlContactsDAO();
+		// ContactsDAO dao = new JdbcMysqlContactsDAO();
+		ContactsDAO dao = new JPAContactsDAO();
 		List<String> listeEmails = dao.findEmailsByContactType(type);
 
 		for (String email : listeEmails) {

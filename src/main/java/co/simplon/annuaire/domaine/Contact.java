@@ -43,7 +43,7 @@ public class Contact {
 		this.nom = nom;
 		this.type = type;
 	}
-	
+
 	public Contact(long id, String prenom, String nom, String type) {
 		this(prenom, nom, type);
 		this.id = id;
@@ -84,5 +84,27 @@ public class Contact {
 	public Set<Hobbie> getHobbies() {
 		return hobbies;
 	}
-	
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setHobbies(Set<Hobbie> hobbies) {
+		this.hobbies = hobbies;
+	}
+
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", prenom=" + prenom + ", nom=" + nom
+				+ ", email=" + email + ", type=" + type + ", age=" + age + "]";
+	}
+
 }
